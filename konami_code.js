@@ -2,22 +2,18 @@ const codes = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
 
 function init() {
   var index = 0;
-  document.addEventListener('keydown', onKeyDownHandler);
+  document.addEventListener('keydown', function(e) {
+    const key = parseInt(e.which || e.detail);
 
-  function onkeyDownHandler(e) {
-    const key = parseInt(e.detail || e.which);
-    console.log('key', key);
-    if (key === code[index]) {
+    if (code[index] === key) {
       index++;
 
       if (index === code.length) {
-        alert("YOU DID IT!");
+        alert("Hurray!");
         index = 0;
       }
     } else {
       index = 0;
     }
-  }
+  });
 }
-
-init();
